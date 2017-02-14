@@ -1,0 +1,74 @@
+h1 {
+    color: #7F919E;
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
+.row {
+    margin: 0px;
+}
+
+ .rbc-label-start {
+  font-family: fontawesome;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.rbc-center-text {
+  font-family: 'Roboto', 'Myriad Set Pro', 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial;
+  fill: white;
+}
+
+.calories .rbc-center-text-line0 {
+  font-size: 95px;
+}
+
+.calories .rbc-center-text-line1 {
+  font-size: 20px;
+}
+
+.gpa .rbc-center-text-line0 {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 1279px) {
+    html {
+        background: none;
+    }
+    
+    #content > div {
+        background: #232E38;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    body {
+        background: url("../images/coffee-backgound.jpeg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: -220px;
+    }
+    
+    #image {
+        display: none;
+    }
+    
+    #content > div {
+        position: absolute;
+        background: #232E38;
+        height: 100%;
+        padding: 40px 60px;
+    }
+    
+    #content h1 {
+        margin-top: 40px;
+        font-size: 65px;
+        font-weight: 700;
+    }
+    
+    
+}
