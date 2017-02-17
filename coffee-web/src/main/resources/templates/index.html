@@ -2,82 +2,90 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>decora | coffee status</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="/css/style.css"/>
-    
-    <script src="//use.fontawesome.com/8ff690a63a.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.js"></script>
-    <script src="/js/radial-progress-chart.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>decora | coffee status</title>
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous" />
+<link rel="stylesheet" href="/css/style.css" />
+
+<script src="//use.fontawesome.com/8ff690a63a.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.js"></script>
+<script src="/js/radial-progress-chart.min.js"></script>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div id="image" class="row" style="text-align: center;">
-            <img src="/images/coffee-backgound.jpeg" style="max-width: 100%;" />
-        </div>
-        <div id="content" class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-offset-6 col-lg-6">
-                <img src="/images/decora_logo_red.png" width="270"/>
-                <h1>Our coffee stats</h1>
-                <div class="col-md-4 col-md-offset-4">
-                  <div class="calories"></div>
-                  <div class="gpa"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
+	<div class="container-fluid">
+		<div id="image" class="row" style="text-align: center;">
+			<img src="/images/coffee-backgound.jpeg" style="max-width: 100%;" />
+		</div>
+		<div id="content" class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-offset-6 col-lg-6">
+				<img src="/images/decora_logo_red.png" width="270" />
+				<h1>Monthly coffee stats</h1>
+				<div class="col-md-6 col-md-offset-3 col-sm-12">
+					<div class="calories"></div>
+					<div class="gpa"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var calories = new RadialProgressChart('.calories', {
+			diameter : 200,
+			max : 300,
+			round : true,
+			series : [ {
+				labelStart : '\uF105',
+				value : 500,
+				color : {
+					linearGradient : {
+						x1 : '0%',
+						y1 : '100%',
+						x2 : '50%',
+						y2 : '0%',
+						spreadMethod : 'pad'
+					},
+					stops : [ {
+						offset : '0%',
+						'stop-color' : '#fe08b5',
+						'stop-opacity' : 1
+					}, {
+						offset : '100%',
+						'stop-color' : '#ff1410',
+						'stop-opacity' : 1
+					} ]
+				}
+			} ],
+			center : {
+				content : [ function(value) {
+					return value
+				}, 'Notifications' ],
+				y : 25
+			}
+		});
 
-  var calories = new RadialProgressChart('.calories', {
-    diameter: 200,
-    max: 800,
-    round: true,
-    series: [
-      {
-        labelStart: '\uF105',
-        value: 500,
-        color: {
-          linearGradient: { x1: '0%', y1: '100%', x2: '50%', y2: '0%', spreadMethod: 'pad' },
-          stops: [
-            {offset: '0%', 'stop-color': '#fe08b5', 'stop-opacity': 1},
-            {offset: '100%', 'stop-color': '#ff1410', 'stop-opacity': 1}
-          ]}
-      }
-    ],
-    center: {
-      content: [function (value) {
-        return value
-      }, 'Notifications'],
-      y: 25
-    }
-  });
+		var gpa = new RadialProgressChart('.gpa', {
+			diameter : 200,
+			max : 300,
+			round : true,
+			series : [ {
+				labelStart : '\uF105',
+				value : 100,
+				color : [ 'red', '#7CFC00' ]
+			} ],
+			center : function(d) {
+				return d + ' Cups'
+			}
+		});
 
-  var gpa = new RadialProgressChart('.gpa', {
-    diameter: 200,
-    max: 10,
-    round: false,
-    series: [
-      {
-        value: 3.75,
-        color: ['red', '#7CFC00']
-      }
-    ],
-    center: function (d) {
-      return d.toFixed(2) + ' Cups'
-    }
-  });
+		function getRandom(min, max) {
+			return Math.random() * (max - min) + min;
+		}
 
-
-  function getRandom(min, max) {
-    return Math.random() * (max - min) + min;
-  }
-
-  calories.update(Math.round(getRandom(800, 880)));
-  gpa.update(getRandom(0.5, 3.8));
-
-
-</script>
+		calories.update(Math.round(getRandom(130, 150)));
+		gpa.update(getRandom(200, 300));
+	</script>
 </body>
 </html>
