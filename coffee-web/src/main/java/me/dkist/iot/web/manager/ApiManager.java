@@ -27,19 +27,41 @@ public class ApiManager {
 			p.setSlackUser("@johnboe");
 			personService.getCollection().save(p);
 		}
+//		Batch b = loadBatch();
+//		if(b == null) {
+//			//New pending batch
+//			b = new Batch();
+//			b.setInitTime(LocalDateTime.now());
+//			b.setEndTime(LocalDateTime.now());
+//			b.setStatus(Status.PENDING);
+//		}
+//		b.addRfidToPool(rfid);
+//		batchService.getCollection().save(b);
 	}
 	
 	public void createOrUpdateBatch() {
-		Batch b = batchService.getCollection().findOne("{ status : # }", Status.IN_PRODUCTION).orderBy("{_id : -1}").as(Batch.class);
+		Batch b = loadBatch();
 		if(b == null) {
 			//New batch
 			b = new Batch();
 			b.setInitTime(LocalDateTime.now());
+			b.setEndTime(LocalDateTime.now());
+			b.setStatus(Status.IN_PRODUCTION);
+			batchService.getCollection().save(b);
+		} else if(b.getEndTime().isAfter(LocalDateTime.now().minusSeconds(10))) {
+			//Update existing batch
+			b.setEndTime(LocalDateTime.now());
+			b.setStatus(Status.IN_PRODUCTION);
 			batchService.getCollection().save(b);
 		} else {
-			//Update existing batch
+			b.setEndTime(LocalDateTime.now());
+			b.setStatus(Status.COMPLETED);
+			batchService.getCollection().save(b);
 		}
-		
+	}
+	
+	private Batch loadBatch() {
+		return batchService.getCollection().findOne("{ status : {$in : [#, #] } }", Status.IN_PRODUCTION, Status.PENDING).orderBy("{_id : -1}").as(Batch.class);
 	}
 
 }

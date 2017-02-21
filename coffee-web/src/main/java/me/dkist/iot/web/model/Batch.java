@@ -1,6 +1,7 @@
 package me.dkist.iot.web.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -20,6 +21,19 @@ public class Batch {
 	private List<String> notify;
 	
 	private Integer numberOfCups;
+	
+	public void addRfidToPool(String rfid) {
+		if(this.notify == null) this.notify = new ArrayList<>();
+		if(getNotify().stream().filter(r -> r.equals(rfid)).count() == 0) getNotify().add(rfid);
+	}
+	
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	public ObjectId getId() {
 		return id;
@@ -62,7 +76,7 @@ public class Batch {
 	}
 	
 	public enum Status {
-		IN_PRODUCTION, COMPLETED;
+		PENDING, IN_PRODUCTION, COMPLETED;
 	}
 
 }
