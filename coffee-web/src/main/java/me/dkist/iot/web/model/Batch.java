@@ -15,6 +15,8 @@ public class Batch {
 	
 	private LocalDateTime endTime;
 	
+	private Status status;
+	
 	private List<String> notify;
 	
 	private Integer numberOfCups;
@@ -57,6 +59,10 @@ public class Batch {
 
 	public void setNumberOfCups(Integer numberOfCups) {
 		this.numberOfCups = numberOfCups;
+	}
+	
+	public enum Status {
+		IN_PRODUCTION, COMPLETED;
 	}
 
 }
