@@ -15,12 +15,6 @@ public class PagesController {
 		
 	@RequestMapping("/")
     public String index() {
-		Person person = new Person();
-		person.setId(new ObjectId());
-		person.setName("Daniel");
-		person.setRfid("" + System.currentTimeMillis());
-		person.setSlackUser("daniel.kist");
-		service.getCollection().save(person);
 		return "index";
     }
 
