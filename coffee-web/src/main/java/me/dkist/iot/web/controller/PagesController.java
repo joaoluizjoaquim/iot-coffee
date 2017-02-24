@@ -4,23 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import de.undercouch.bson4jackson.types.ObjectId;
-import me.dkist.iot.web.model.Person;
-import me.dkist.iot.web.service.PersonService;
+import me.dkist.iot.web.person.Person;
+import me.dkist.iot.web.person.PersonRepository;
 
 @Controller
 public class PagesController {
 	
-	@Autowired PersonService service;
+	@Autowired PersonRepository personRepository;
 		
 	@RequestMapping("/")
     public String index() {
 		Person person = new Person();
-		//person.setId(new ObjectId());
 		person.setName("Daniel");
 		person.setRfid("" + System.currentTimeMillis());
 		person.setSlackUser("daniel.kist");
-		//service.getCollection().save(person);
+		personRepository.save(person);
 		return "index";
     }
 

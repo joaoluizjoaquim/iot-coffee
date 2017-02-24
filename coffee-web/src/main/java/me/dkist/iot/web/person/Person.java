@@ -1,26 +1,17 @@
-package me.dkist.iot.web.model;
+package me.dkist.iot.web.person;
 
-import de.undercouch.bson4jackson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 
 public class Person {
 	
-	//@MongoId
-	//@MongoObjectId
-	private ObjectId id;
+	@Id
+	private String id;
 	
 	private String name;
 	
 	private String rfid;
 	
 	private String slackUser;
-
-	public ObjectId getId() {
-		return id;
-	}
-
-	public void setId(ObjectId id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -46,4 +37,14 @@ public class Person {
 		this.slackUser = slackUser;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	
+	
 }

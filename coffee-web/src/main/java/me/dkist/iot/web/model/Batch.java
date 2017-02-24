@@ -3,28 +3,20 @@ package me.dkist.iot.web.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import de.undercouch.bson4jackson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 
 public class Batch {
-	
-	//@MongoObjectId
-	private ObjectId id;
-	
+
+	@Id
+	private String id;
+
 	private LocalDateTime initTime;
-	
+
 	private LocalDateTime endTime;
-	
+
 	private List<String> notify;
-	
+
 	private Integer numberOfCups;
-
-	public ObjectId getId() {
-		return id;
-	}
-
-	public void setId(ObjectId id) {
-		this.id = id;
-	}
 
 	public LocalDateTime getInitTime() {
 		return initTime;
@@ -56,6 +48,14 @@ public class Batch {
 
 	public void setNumberOfCups(Integer numberOfCups) {
 		this.numberOfCups = numberOfCups;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
