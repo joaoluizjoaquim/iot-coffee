@@ -1,4 +1,4 @@
-package me.dkist.iot.web;
+package me.dkist.iot.config;
 
 import java.net.UnknownHostException;
 
