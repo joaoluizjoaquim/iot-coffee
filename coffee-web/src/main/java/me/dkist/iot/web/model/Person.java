@@ -1,13 +1,11 @@
 package me.dkist.iot.web.model;
 
-import org.bson.types.ObjectId;
-import org.jongo.marshall.jackson.oid.MongoId;
-import org.jongo.marshall.jackson.oid.MongoObjectId;
+import de.undercouch.bson4jackson.types.ObjectId;
 
 public class Person {
 	
-	@MongoId
-	@MongoObjectId
+	//@MongoId
+	//@MongoObjectId
 	private ObjectId id;
 	
 	private String name;

@@ -3,12 +3,11 @@ package me.dkist.iot.web.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.bson.types.ObjectId;
-import org.jongo.marshall.jackson.oid.MongoObjectId;
+import de.undercouch.bson4jackson.types.ObjectId;
 
 public class Batch {
 	
-	@MongoObjectId
+	//@MongoObjectId
 	private ObjectId id;
 	
 	private LocalDateTime initTime;
