@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
-import org.jongo.marshall.jackson.oid.MongoObjectId;
+import org.springframework.data.annotation.Id;
 
 public class Batch {
 	
-	@MongoObjectId
+	@Id
 	private ObjectId id;
 	
 	private LocalDateTime initTime;

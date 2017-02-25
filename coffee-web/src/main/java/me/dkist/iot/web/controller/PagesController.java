@@ -1,26 +1,33 @@
 package me.dkist.iot.web.controller;
 
-import org.bson.types.ObjectId;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import me.dkist.iot.web.model.Person;
-import me.dkist.iot.web.service.PersonService;
+import me.dkist.iot.web.person.Person;
+import me.dkist.iot.web.person.PersonRepository;
 
 @Controller
 public class PagesController {
 	
-	@Autowired PersonService service;
+	@Autowired 
+	private PersonRepository personRepository;
 		
-	@RequestMapping("/")
+	@RequestMapping(value="/",method=RequestMethod.GET)
     public String index() {
 		Person person = new Person();
-		person.setId(new ObjectId());
 		person.setName("Daniel");
 		person.setRfid("" + System.currentTimeMillis());
 		person.setSlackUser("daniel.kist");
-		service.getCollection().save(person);
+		person.setInsertTime(LocalDateTime.now());
+		personRepository.save(person);
+		
+		List<Person> list = personRepository.findAll();
+		
 		return "index";
     }
 
