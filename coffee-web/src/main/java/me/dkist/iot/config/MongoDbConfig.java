@@ -10,8 +10,10 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 
+import me.dkist.iot.App;
+
 @Configuration
-@EnableMongoRepositories(basePackageClasses = MongoDbConfig.class)
+@EnableMongoRepositories(basePackageClasses = App.class)
 public class MongoDbConfig extends AbstractMongoConfiguration {
 
 	public @Bean Mongo mongo() throws UnknownHostException {
