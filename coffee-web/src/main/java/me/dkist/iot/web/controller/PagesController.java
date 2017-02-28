@@ -10,12 +10,12 @@ import me.dkist.iot.web.service.PersonService;
 
 @Controller
 public class PagesController {
-	
-	@Autowired PersonService service;
-		
-	@RequestMapping("/")
+    
+    @Autowired PersonService service;
+    
+    @RequestMapping("/")
     public String index() {
-		return "index";
+        return "index";
     }
-
+    
 }
