@@ -64,7 +64,7 @@ public class BatchController {
 		b.getNotify().forEach(personId -> {
 			Person p = personRepository.findById(personId);
 			if(p != null) {
-				sendSlackNotification(maker.getSlackUser(), "Coffee is ready!");
+				sendSlackNotification(p.getSlackUser(), "Coffee is ready!");
 			}
 		});
 		sleep(60000);
@@ -73,8 +73,8 @@ public class BatchController {
 	}
 
 	private void sendSlackNotification(String channel, String message) {
+		if(channel.equals("@johndoe")) return;
 		String url = System.getenv("SLACK_WEBHOOK_URL");
-		
 		Payload payload = Payload.builder().channel(channel).text(message).build();
 		try {
 			slack.send(url, payload);
