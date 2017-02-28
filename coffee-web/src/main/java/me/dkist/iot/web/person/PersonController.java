@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
-public class ApiController {
+public class PersonController {
 	
 	
 	@RequestMapping(value = "/rfid/{rfid}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

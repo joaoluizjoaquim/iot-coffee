@@ -26,7 +26,8 @@ public class PagesController {
 		person.setInsertTime(LocalDateTime.now());
 		personRepository.save(person);
 		
-		List<Person> list = personRepository.findAll();
+		List<Person> list = personRepository.findUsersBySlack("daniel.kist");
+		System.out.println(list.size());
 		
 		return "index";
     }
