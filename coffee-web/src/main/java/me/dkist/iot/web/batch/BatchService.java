@@ -1,4 +1,4 @@
-package me.dkist.iot.web.service;
+package me.dkist.iot.web.batch;
 
 import org.springframework.stereotype.Service;
 

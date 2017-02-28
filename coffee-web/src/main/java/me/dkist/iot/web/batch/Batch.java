@@ -1,4 +1,4 @@
-package me.dkist.iot.web.model;
+package me.dkist.iot.web.batch;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,26 +12,30 @@ public class Batch {
 	@Id
 	private ObjectId id;
 	
+	private ObjectId maker;
+	
+	private LocalDateTime insertTime;
+	
 	private LocalDateTime initTime;
 	
 	private LocalDateTime endTime;
 	
-	private Status status;
+	private BatchStatus status;
 	
-	private List<String> notify;
+	private List<ObjectId> notify;
 	
 	private Integer numberOfCups;
 	
-	public void addRfidToPool(String rfid) {
+	public void addRfidToPool(ObjectId personId) {
 		if(this.notify == null) this.notify = new ArrayList<>();
-		if(getNotify().stream().filter(r -> r.equals(rfid)).count() == 0) getNotify().add(rfid);
+		if(getNotify().stream().filter(r -> r.equals(personId)).count() == 0) getNotify().add(personId);
 	}
 	
-	public Status getStatus() {
+	public BatchStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(BatchStatus status) {
 		this.status = status;
 	}
 
@@ -59,11 +63,11 @@ public class Batch {
 		this.endTime = endTime;
 	}
 
-	public List<String> getNotify() {
+	public List<ObjectId> getNotify() {
 		return notify;
 	}
 
-	public void setNotify(List<String> notify) {
+	public void setNotify(List<ObjectId> notify) {
 		this.notify = notify;
 	}
 
@@ -75,8 +79,24 @@ public class Batch {
 		this.numberOfCups = numberOfCups;
 	}
 	
-	public enum Status {
-		PENDING, IN_PRODUCTION, COMPLETED;
+	public enum BatchStatus {
+		PENDING, IN_PRODUCTION, COMPLETED, CLOSED;
+	}
+
+	public LocalDateTime getInsertTime() {
+		return insertTime;
+	}
+
+	public void setInsertTime(LocalDateTime insertTime) {
+		this.insertTime = insertTime;
+	}
+
+	public ObjectId getMaker() {
+		return maker;
+	}
+
+	public void setMaker(ObjectId maker) {
+		this.maker = maker;
 	}
 
 }
