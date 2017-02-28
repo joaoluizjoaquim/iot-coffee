@@ -74,7 +74,10 @@ public class BatchController {
 
 	private void sendSlackNotification(String channel, String message) {
 		if(channel.equals("@johndoe")) return;
+		
 		String url = System.getenv("SLACK_WEBHOOK_URL");
+		if(url == null) return;
+		
 		Payload payload = Payload.builder().channel(channel).text(message).build();
 		try {
 			slack.send(url, payload);
