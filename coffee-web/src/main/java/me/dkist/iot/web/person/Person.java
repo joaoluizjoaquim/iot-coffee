@@ -1,17 +1,22 @@
 package me.dkist.iot.web.person;
 
+import java.time.LocalDateTime;
+
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 public class Person {
 	
 	@Id
-	private String id;
+	private ObjectId id;
 	
 	private String name;
 	
 	private String rfid;
 	
 	private String slackUser;
+	
+	private LocalDateTime insertTime;
 
 	public String getName() {
 		return name;
@@ -37,12 +42,20 @@ public class Person {
 		this.slackUser = slackUser;
 	}
 
-	public String getId() {
+	public ObjectId getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(ObjectId id) {
 		this.id = id;
+	}
+
+	public LocalDateTime getInsertTime() {
+		return insertTime;
+	}
+
+	public void setInsertTime(LocalDateTime insertTime) {
+		this.insertTime = insertTime;
 	}
 
 	

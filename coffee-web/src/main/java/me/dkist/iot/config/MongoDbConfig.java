@@ -5,6 +5,7 @@ import java.net.UnknownHostException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.mongodb.Mongo;
@@ -22,6 +23,12 @@ public class MongoDbConfig extends AbstractMongoConfiguration {
 
 	@Override
 	protected String getDatabaseName() {
-		return "test";
+		return "iot-coffee";
+	}
+
+	public @Bean MongoTemplate mongoTemplate() throws Exception {
+		MongoTemplate mongoTemplate = new MongoTemplate(mongo(), getDatabaseName());
+		return mongoTemplate;
+
 	}
 }
