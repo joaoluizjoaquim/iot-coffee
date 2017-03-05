@@ -10,8 +10,8 @@
 				<img id="logo" src="/assets/images/decora_logo_red.png" />
 				<h1>Monthly coffee stats</h1>
 				<div class="col-md-6 col-md-offset-3 col-sm-12">
-					<div class="calories"></div>
-					<div class="gpa"></div>
+					<radial-progress-chart [config]="radialNotificationConfig"></radial-progress-chart>
+					<radial-progress-chart [config]="radialCupsConfig"></radial-progress-chart>
 				</div>
 			</div>
 		</div>

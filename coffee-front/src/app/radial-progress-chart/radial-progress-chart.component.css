@@ -1,0 +1,18 @@
+ .rbc-label-start {
+  font-family: fontawesome;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.rbc-center-text {
+  font-family: 'Roboto', 'Myriad Set Pro', 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial;
+  fill: white;
+}
+
+.rbc-center-text-line0 {
+  font-size: 95px;
+}
+
+.rbc-center-text-line1 {
+  font-size: 20px;
+}
